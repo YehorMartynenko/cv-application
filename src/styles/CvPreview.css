@@ -1,0 +1,30 @@
+.cv-preview {
+  border: 0.5px solid var(--border-color);
+  background-color: white;
+  color: black;
+  padding: 2rem;
+
+  width: 794px;
+  min-height: 1123px;
+  flex-shrink: 0;
+}
+
+.cv-name {
+  text-align: center;
+}
+
+.icon {
+  width: 20px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cv-contact-info {
+  display: flex;
+  gap: 10px 30px;
+  flex-wrap: wrap;
+}

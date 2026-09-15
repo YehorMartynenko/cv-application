@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import "./App.css";
 import GeneralInformation from "./components/GeneralInformation";
-import CvBlank from "./components/CvBlank";
+import CvPreview from "./components/CvPreview";
 function App() {
   const [generalInfo, setGeneralInfo] = useState({
     name: "",
@@ -12,17 +12,17 @@ function App() {
     github: "",
   });
   return (
-    <>
+    <div className="container">
       <section className="info-redactor">
         <GeneralInformation
           generalInfo={generalInfo}
           setGeneralInfo={setGeneralInfo}
         />
       </section>
-      <section className="cv-blank">
-        <CvBlank generalInfo={generalInfo} />
+      <section className="cv-preview">
+        <CvPreview generalInfo={generalInfo} />
       </section>
-    </>
+    </div>
   );
 }
 

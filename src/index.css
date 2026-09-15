@@ -1,0 +1,19 @@
+:root {
+  --calibri: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  --bg-color: #2c2c2c;
+  --border-color: #505050;
+  --text-color: white;
+
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--calibri);
+
+  line-height: 1.5;
+  font-size: 18px;
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
