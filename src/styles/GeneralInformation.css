@@ -20,13 +20,34 @@ input {
   border: 1px solid var(--border-color);
   font-size: 1rem;
 }
-
 @media print {
-  .info-redactor {
-    display: none;
+  .info-redactor,
+  .print-btn {
+    display: none !important;
   }
 
-  .cv-preview {
-    margin: 0;
+  body,
+  #root,
+  .container,
+  .cv-preview,
+  .preview-container {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 10mm;
+  }
+
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
   }
 }
