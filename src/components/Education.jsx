@@ -37,7 +37,7 @@ export default function Education({ educationInfo, setEducationInfo }) {
     setFormData(formDataDefault);
   }
 
-  function addSubmitClick(e) {
+  function submitEditClick(e) {
     e.preventDefault();
     setEducationInfo(
       educationInfo.map((item) =>
@@ -91,7 +91,7 @@ export default function Education({ educationInfo, setEducationInfo }) {
         placeholders={placeholders}
         mode={mode}
         onCancel={cancelEditClick}
-        onSubmit={addSubmitClick}
+        onSubmit={submitEditClick}
         onAdd={addEducationClick}
       />
     </form>
