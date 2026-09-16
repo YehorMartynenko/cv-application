@@ -22,7 +22,7 @@ export default function Education({ educationInfo, setEducationInfo }) {
 
   function addEducationClick(e) {
     e.preventDefault();
-    const newEduaction = {
+    const newEducation = {
       key: crypto.randomUUID(),
       school: formData.school,
       degree: formData.degree,
@@ -30,7 +30,7 @@ export default function Education({ educationInfo, setEducationInfo }) {
       endDate: formData.endDate,
     };
 
-    const newEducationArr = [...educationInfo, newEduaction];
+    const newEducationArr = [...educationInfo, newEducation];
     setEducationInfo(newEducationArr);
     setFormData(formDataDefault);
   }
@@ -46,6 +46,7 @@ export default function Education({ educationInfo, setEducationInfo }) {
     setMode("add");
     setFormData(formDataDefault);
   }
+
   function cancelEditClick(e) {
     e.preventDefault();
     setMode("add");
@@ -73,122 +74,120 @@ export default function Education({ educationInfo, setEducationInfo }) {
   }
 
   return (
-    <>
-      <form className="form-section">
-        <h2>Education: </h2>
-        {educationInfo > 0 && (
-          <div className="education-list-container">
-            {educationInfo.map((school) => {
-              return (
-                <div
-                  className="school-item-edit"
-                  key={school.key}
-                >
-                  <div className="main-info-wrapper">
-                    <div className="education-main-info">
-                      <span>{school.school}</span>
-                      <span>{school.degree}</span>
-                    </div>
-                    <div className="education-dates">
-                      <span>{school.startDate}</span>
-                      <span>{school.endDate}</span>
-                    </div>
+    <form className="form-section">
+      <h2>Education: </h2>
+      {educationInfo.length > 0 && (
+        <ul className="education-list-container">
+          {educationInfo.map((school) => {
+            return (
+              <li
+                className="school-item-edit"
+                key={school.key}
+              >
+                <div className="main-info-wrapper">
+                  <div className="education-main-info">
+                    <span>{school.school}</span>
+                    <span>{school.degree}</span>
                   </div>
-                  <div className="edit-btn-wrapper">
-                    <button
-                      type="button"
-                      onClick={() => editItem(school.key)}
-                    >
-                      Edit
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => deleteItem(school.key)}
-                    >
-                      Delete
-                    </button>
+                  <div className="education-dates">
+                    <span>{school.startDate}</span>
+                    <span>{school.endDate}</span>
                   </div>
                 </div>
-              );
-            })}
-          </div>
-        )}
-        <div className="form-item">
-          <label htmlFor="school">School:</label>
-          <input
-            id="school"
-            name="school"
-            type="text"
-            value={formData.school}
-            onChange={handleChange}
-            placeholder={placeholders.school}
-          />
-        </div>
+                <div className="edit-btn-wrapper">
+                  <button
+                    type="button"
+                    onClick={() => editItem(school.key)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => deleteItem(school.key)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+      <div className="form-item">
+        <label htmlFor="school">School:</label>
+        <input
+          id="school"
+          name="school"
+          type="text"
+          value={formData.school}
+          onChange={handleChange}
+          placeholder={placeholders.school}
+        />
+      </div>
 
-        <div className="form-item">
-          <label htmlFor="degree">Degree:</label>
-          <input
-            id="degree"
-            name="degree"
-            type="text"
-            value={formData.degree}
-            onChange={handleChange}
-            placeholder={placeholders.degree}
-          />
-        </div>
+      <div className="form-item">
+        <label htmlFor="degree">Degree:</label>
+        <input
+          id="degree"
+          name="degree"
+          type="text"
+          value={formData.degree}
+          onChange={handleChange}
+          placeholder={placeholders.degree}
+        />
+      </div>
 
-        <div className="form-item">
-          <label htmlFor="startDate">Start date:</label>
-          <input
-            id="startDate"
-            name="startDate"
-            type="date"
-            value={formData.startDate}
-            onChange={handleChange}
-            placeholder={placeholders.startDate}
-          />
-        </div>
+      <div className="form-item">
+        <label htmlFor="startDate">Start date:</label>
+        <input
+          id="startDate"
+          name="startDate"
+          type="date"
+          value={formData.startDate}
+          onChange={handleChange}
+          placeholder={placeholders.startDate}
+        />
+      </div>
 
-        <div className="form-item">
-          <label htmlFor="endDate">End date:</label>
-          <input
-            id="endDate"
-            name="endDate"
-            type="date"
-            value={formData.endDate}
-            onChange={handleChange}
-            placeholder={placeholders.endDate}
-          />
-        </div>
+      <div className="form-item">
+        <label htmlFor="endDate">End date:</label>
+        <input
+          id="endDate"
+          name="endDate"
+          type="date"
+          value={formData.endDate}
+          onChange={handleChange}
+          placeholder={placeholders.endDate}
+        />
+      </div>
 
-        <div className="add-btn-wrapper">
-          {mode === "add" ? (
+      <div className="add-btn-wrapper">
+        {mode === "add" ? (
+          <button
+            className="add-education add-btn"
+            type="button"
+            onClick={addEducationClick}
+          >
+            Add Education
+          </button>
+        ) : (
+          <>
             <button
-              className="add-education add-btn"
+              className="submit-edit-education edit-btn"
               type="button"
-              onClick={addEducationClick}
+              onClick={addSubmitClick}
             >
-              Add Education
+              Submit
             </button>
-          ) : (
-            <>
-              <button
-                className="submit-edit-education edit-btn"
-                type="button"
-                onClick={addSubmitClick}
-              >
-                Submit
-              </button>
-              <button
-                type="button"
-                onClick={cancelEditClick}
-              >
-                Cancel
-              </button>
-            </>
-          )}
-        </div>
-      </form>
-    </>
+            <button
+              type="button"
+              onClick={cancelEditClick}
+            >
+              Cancel
+            </button>
+          </>
+        )}
+      </div>
+    </form>
   );
 }
