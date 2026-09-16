@@ -22,23 +22,17 @@ export default function Education({ educationInfo, setEducationInfo }) {
 
   function addEducationClick(e) {
     e.preventDefault();
+    const newEduaction = {
+      key: crypto.randomUUID(),
+      school: formData.school,
+      degree: formData.degree,
+      startDate: formData.startDate,
+      endDate: formData.endDate,
+    };
 
-    const form = e.target.closest("form");
-    if (form) {
-      const formData = new FormData(form);
-      const newEduaction = {
-        key: crypto.randomUUID(),
-        school: formData.get("school"),
-        degree: formData.get("degree"),
-
-        startDate: formData.get("startDate"),
-        endDate: formData.get("endDate"),
-      };
-
-      const newEducationArr = [...educationInfo, newEduaction];
-      setEducationInfo(newEducationArr);
-      setFormData(formDataDefault);
-    }
+    const newEducationArr = [...educationInfo, newEduaction];
+    setEducationInfo(newEducationArr);
+    setFormData(formDataDefault);
   }
 
   function addSubmitClick(e) {
@@ -67,8 +61,7 @@ export default function Education({ educationInfo, setEducationInfo }) {
     setEducationInfo(educationInfo.filter((item) => item.key !== key));
   }
 
-  function editItem(key, e) {
-    e.preventDefault();
+  function editItem(key) {
     setMode("edit");
     const itemToEdit = educationInfo.find((item) => item.key === key);
     if (itemToEdit) {
@@ -107,10 +100,16 @@ export default function Education({ educationInfo, setEducationInfo }) {
                       </div>
                     </div>
                     <div className="edit-btn-wrapper">
-                      <button onClick={(e) => editItem(school.key, e)}>
+                      <button
+                        type="button"
+                        onClick={() => editItem(school.key)}
+                      >
                         Edit
                       </button>
-                      <button onClick={() => deleteItem(school.key)}>
+                      <button
+                        type="button"
+                        onClick={() => deleteItem(school.key)}
+                      >
                         Delete
                       </button>
                     </div>
@@ -134,7 +133,7 @@ export default function Education({ educationInfo, setEducationInfo }) {
           <div className="form-item">
             <label htmlFor="degree">Degree:</label>
             <input
-              id="scdegreehool"
+              id="degree"
               name="degree"
               type="text"
               value={formData.degree}
@@ -171,6 +170,7 @@ export default function Education({ educationInfo, setEducationInfo }) {
             {mode === "add" ? (
               <button
                 className="add-education add-btn"
+                type="button"
                 onClick={addEducationClick}
               >
                 Add Education
@@ -179,6 +179,7 @@ export default function Education({ educationInfo, setEducationInfo }) {
               <>
                 <button
                   className="submit-edit-education edit-btn"
+                  type="button"
                   onClick={addSubmitClick}
                 >
                   Submit
