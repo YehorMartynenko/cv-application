@@ -27,7 +27,7 @@ export default function Education({ educationInfo, setEducationInfo }) {
     if (form) {
       const formData = new FormData(form);
       const newEduaction = {
-        key: educationInfo.length + 1,
+        key: crypto.randomUUID(),
         school: formData.get("school"),
         degree: formData.get("degree"),
 
