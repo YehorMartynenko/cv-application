@@ -16,11 +16,11 @@ function normalizeUrl(url) {
   return url;
 }
 
-export default function CvPreview({ generalInfo }) {
+export default function CvPreview({ generalInfo, educationInfo }) {
   return (
     <>
       <div className="preview-container">
-        <h1 className="cv-name">{generalInfo.name || "Your Name"}</h1>
+        <h1 className="cv-name">{generalInfo.name}</h1>
         <div className="cv-contact-info">
           {generalInfo.email && (
             <div className="info-item">
@@ -74,6 +74,33 @@ export default function CvPreview({ generalInfo }) {
             </div>
           )}
         </div>
+        {educationInfo.length > 0 && (
+          <>
+            <h2>Education</h2>
+            {educationInfo.map((school) => {
+              return (
+                <div
+                  className="school-item"
+                  key={school.key}
+                >
+                  <div className="education-main-info">
+                    <span className="bold-text">{school.school}</span>
+                    <span>{school.degree}</span>
+                  </div>
+                  <div className="education-dates">
+                    <span className="bold-text">{school.startDate}</span>
+                    {" - "}
+                    <span className="bold-text">
+                      {school.startDate && !school.endDate
+                        ? "Now"
+                        : school.endDate}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+          </>
+        )}
       </div>
       <button
         className="print-btn"

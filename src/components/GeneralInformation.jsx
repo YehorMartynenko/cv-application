@@ -16,7 +16,7 @@ export default function GeneralInformation({ generalInfo, setGeneralInfo }) {
   return (
     <>
       <form
-        className="general-info"
+        className="from-section"
         method="post"
         action=""
       >

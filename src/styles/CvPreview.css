@@ -57,3 +57,47 @@
   color: white;
   border: 1px solid var(--border-color);
 }
+
+.school-item {
+  display: flex;
+  justify-content: space-between;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.education-main-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.school-item-edit {
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+}
+
+.main-info-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-btn-wrapper {
+  display: flex;
+  justify-content: end;
+  gap: 0.5rem;
+}
+
+.edit-btn-wrapper button {
+  background-color: var(--bg-color);
+  color: white;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.edit-btn-wrapper button:hover {
+  text-decoration: underline;
+}
+
+.bold-text {
+  font-weight: bold;
+}
