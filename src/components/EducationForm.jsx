@@ -53,10 +53,10 @@ export default function EducationForm({
           placeholder={placeholders.endDate}
         />
       </div>
-      <div className="add-btn-wrapper">
+      <div className="btn-wrapper">
         {mode === "add" ? (
           <button
-            className="add-education add-btn"
+            className="primary-btn"
             type="button"
             onClick={onAdd}
           >
@@ -65,13 +65,14 @@ export default function EducationForm({
         ) : (
           <>
             <button
-              className="submit-edit-education edit-btn"
+              className="primary-btn"
               type="button"
               onClick={onSubmit}
             >
               Submit
             </button>
             <button
+              className="primary-btn"
               type="button"
               onClick={onCancel}
             >

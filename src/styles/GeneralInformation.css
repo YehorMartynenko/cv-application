@@ -21,12 +21,12 @@ input {
   font-size: 1rem;
 }
 
-.add-btn-wrapper {
+.btn-wrapper {
   display: flex;
   justify-content: center;
 }
 
-.add-btn {
+.primary-btn {
   flex: auto;
   padding: 1rem;
   font-size: 1rem;
@@ -34,7 +34,7 @@ input {
   border: 1px solid var(--border-color);
 }
 
-.add-btn:hover {
+.primary-btn:hover {
   background-color: var(--bg-color);
   color: white;
 }
